@@ -13,6 +13,8 @@ LABEL org.label-schema.docker.cmd="docker run -it --rm --name detect-secrets --v
 
 RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
 RUN pip install detect-secrets
+#
+# Install azure plugin
+COPY azure_storage_key.py /usr/local/lib/python3.7/site-packages/detect_secrets/plugins/azure_storage_key.py
 
-WORKDIR /usr/src/app
 ENTRYPOINT ["detect-secrets-hook", "--verbose"]
