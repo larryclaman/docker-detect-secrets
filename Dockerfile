@@ -17,4 +17,7 @@ RUN pip install detect-secrets
 # Install azure plugin
 COPY azure_storage_key.py /usr/local/lib/python3.7/site-packages/detect_secrets/plugins/azure_storage_key.py
 
-ENTRYPOINT ["detect-secrets-hook", "--verbose"]
+
+WORKDIR /usr/src/app
+#ENTRYPOINT ["detect-secrets-hook", "--verbose"]
+ENTRYPOINT ["detect-secrets", "scan"]
